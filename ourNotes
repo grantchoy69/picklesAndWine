@@ -1,0 +1,37 @@
+{
+  "taster" : "Grant"
+  "wine_basics": {
+    "Producer" : "The Collection"
+    "vintage": 2021,
+    "grape_s": "Pinot Noir",
+    "region_country": "Monterey",
+    "price": "$11",
+    "where_we_tasted_it": "Home"
+  },
+  "appearance": {
+    "color": "Pale",
+    "huse": "Ruby"
+    "clarity": "Clear",
+    "viscosity": "Medium"
+  },
+  "aromas": {
+    "fruit": ["Cherry", "Sour Cherry", "Cranberry"],
+    "non_fruit": ["Orange rind", "orange", "faint wood/spice", vegetable like asparagus"],
+    "extra_notes": "Dried cranberry, baking spices"
+  },
+  "palate": {
+    "dry_sweet": "Dry",
+    "light_body_full_body": "Medium",
+    "low_acid_high_acid": "Med",
+    "soft_tannins_firm_tannins": "Soft",
+    "simple_complex": "Simple",
+    "short_finish_long_finish": "Med/short"
+  },
+  "vibes_personality": {
+    "vibe_if_person": "Kind of generic guy. Like comfort of the known. Very satisfying but predictable.",
+    "mood_fit": "average weeknight / nothing special",
+    "date_night_again": true
+  },
+  "rating": 6,
+  "personal_notes": "This tasting was so fun!! The vibes + personality insights were thoughtful + interesting. Loved listening + learning more. Can't wait for the next tasting ;)"
+}

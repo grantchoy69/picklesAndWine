@@ -1,0 +1,113 @@
+[
+  {
+  "taster" : "Grant",
+  "wine_basics": {
+    "Producer" : "The Collection",
+    "vintage": 2021,
+    "grape_s": "Pinot Noir",
+    "region_country": "Monterey",
+    "price": "$11",
+    "where_we_tasted_it": "Home"
+  },
+  "appearance": {
+    "color": "Pale",
+    "huse": "Ruby",
+    "clarity": "Clear",
+    "viscosity": "Medium"
+  },
+  "aromas": {
+    "fruit": ["Cherry", "Sour Cherry", "Cranberry", "orange"],
+    "non_fruit": ["Orange rind", "faint wood/spice", "vegetable like asparagus"],
+    "extra_notes": ["Dried cranberry", "baking spices", "chocolate"]
+  },
+  "palate": {
+    "dry_sweet": "Dry",
+    "light_body_full_body": "Medium",
+    "low_acid_high_acid": "Med",
+    "soft_tannins_firm_tannins": "Soft",
+    "simple_complex": "Simple",
+    "short_finish_long_finish": "Med/short"
+  },
+  "vibes_personality": {
+    "vibeField1": "Kind of generic guy. Like comfort of the known. Very satisfying but predictable, if this wine had a wife, shed probably have a hard time paying attention to him",
+    "vibeField2": "average weeknight / nothing special, good price, no issues",
+    "vibeField3": true
+  },
+  "rating": 6,
+  "personal_notes": "Wow, Kyle kept looking at the notes and smiling, and re-reading them. i think shes having a lot of fun with the tasting"
+},
+{
+  "taster": "Kyle",
+  "wine_basics": {
+    "Producer": "The Collection",
+    "vintage": 2021,
+    "grape_s": "Pinot Noir",
+    "region_country": "Monterey",
+    "price": "11",
+    "where_we_tasted_it": "Home"
+  },
+  "appearance": {
+    "color": "Pale-medium Ruby",
+    "clarity": "Clear",
+    "clarity": "",
+    "viscosity": ""
+  },
+  "aromas": {
+    "fruit": ["Cherry", "Red/Pomegranate", "Sour cherry"],
+    "non_fruit": ["Orange", "orange rind faint wood/Spice", "Vegetable like spice"],
+    "extra_notes": ["dried cranberry", "baking spices"]
+  },
+  "palate": {
+    "dry_sweet": "dry-ish / medium",
+    "light_body_full_body": "medium",
+    "low_acid_high_acid": "med",
+    "soft_tannins_firm_tannins": "soft",
+    "simple_complex": "simple",
+    "short_finish_long_finish": "med/short"
+  },
+  "vibes_personality": {
+    "vibeField1": "Nothing spectacular run of the mill guy",
+    "vibeField2": "Average week night/nothing special",
+    "vibeField3": true
+  },
+  "rating": 6,
+  "personal_notes": "This tasting was so fun! The vibes + personality insights were thoughtful + interesting. I loved listening + learning more about this. Can't wait for the next tasting ;)"
+},
+{
+"taster": "Grant",
+"wine_basics": {
+"Producer": "The Collection",
+"vintage": "2022",
+"grape_s": "Cab Sauv",
+"region_country": "CA",
+"price": "$14",
+"where_we_tasted_it": "Home"
+},
+"appearance": {
+"color": "Deep",
+"huse": "purple medium",
+"clarity": "Cloudy",
+"viscosity": "Low"
+},
+"aromas": {
+"fruit": ["Plum", "Dried fruit", "Cherry"],
+"non_fruit": ["Leather", "Oaky"],
+"extra_notes": []
+},
+"palate": {
+"dry_sweet": "Dry",
+"light_body_full_body": "Full",
+"low_acid_high_acid": "Low to med",
+"soft_tannins_firm_tannins": "Soft to med",
+"simple_complex": "Complex",
+"short_finish_long_finish": "Long"
+},
+"vibes_personality": {
+"vibeField1": "Medium to small penis. Horny but doesn't know what to do with it. Heavy but awkward close",
+"vibeField2": "A boring date night",
+"vibeField3": "No, but I'd like to try one close"
+},
+"rating": "It was fine / Not for me",
+"personal_notes": "Id buy if it if it was on sale"
+}
+]
