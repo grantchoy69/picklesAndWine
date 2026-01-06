@@ -1,0 +1,7 @@
+{
+  "title": "Wine Tasting Data",
+  "sources": {
+    "ourNotes": "ourNotes.json",
+    "pickles": "pickles.json"
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wine JSON Viewer</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      background: #f7f7f7;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      margin-top: 2rem;
+    }
+    pre {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Loading…</h1>
+
+  <div id="content"></div>
+
+  <script>
+    async function loadJSON(path) {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error(`Failed to load ${path}`);
+      return res.json();
+    }
+
+    async function init() {
+      const index = await loadJSON("index.json");
+      document.getElementById("title").textContent = index.title;
+
+      const container = document.getElementById("content");
+
+      for (const [name, path] of Object.entries(index.sources)) {
+        const data = await loadJSON(path);
+
+        const section = document.createElement("section");
+        const header = document.createElement("h2");
+        const pre = document.createElement("pre");
+
+        header.textContent = name;
+        pre.textContent = JSON.stringify(data, null, 2);
+
+        section.appendChild(header);
+        section.appendChild(pre);
+        container.appendChild(section);
+      }
+    }
+
+    init().catch(err => {
+      document.body.innerHTML = `<pre>${err.message}</pre>`;
+    });
+  </script>
+
+</body>
+</html>
