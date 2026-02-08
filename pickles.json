@@ -1,3 +1,8 @@
 {
-	"Vegtables":[]
+	"Vegtables":[],
+	"Spices": [],
+	"Salt":"",
+	"Pickle Rating":"",
+	"Food Pairing":{"food name":"", "food rating":""},
+	"Liquor Pairing":{"liquor name":"", "liquor rating":""}
 }

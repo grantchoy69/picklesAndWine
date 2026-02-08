@@ -109,5 +109,191 @@
 },
 "rating": "It was fine / Not for me",
 "personal_notes": "Id buy if it if it was on sale"
+},
+{
+"taster": "Grant",
+"wine_basics": {
+"Producer": "The Collection",
+"vintage": "2022",
+"grape_s": "Tempranillo",
+"region_country": "Castilla y Leon",
+"price": "$14",
+"where_we_tasted_it": "Home"
+},
+"appearance": {
+"color": "Deep",
+"huse": "purple medium",
+"clarity": "Cloudy",
+"viscosity": "Low"
+},
+"aromas": {
+"fruit": ["Plum", "Dried fruit", "Cherry"],
+"non_fruit": ["Leather", "Oaky"],
+"extra_notes": []
+},
+"palate": {
+"dry_sweet": "Dry",
+"light_body_full_body": "Full",
+"low_acid_high_acid": "Low to med",
+"soft_tannins_firm_tannins": "Soft to med",
+"simple_complex": "Complex",
+"short_finish_long_finish": "Long"
+},
+"vibes_personality": {
+"vibeField1": "Medium to small penis. Horny but doesn't know what to do with it. Heavy but awkward close",
+"vibeField2": "A boring date night",
+"vibeField3": "No, but I'd like to try one close"
+},
+"rating": "It was fine / Not for me",
+"personal_notes": ""
+},
+{
+"taster" : "Kyle",
+"wine_basics": {
+"Producer" : "Collection",
+"vintage": "2022",
+"grape_s": "Cab Sauv",
+"region_country": "CA Fresno",
+"price": "",
+"where_we_tasted_it": "Home"
+},
+"appearance": {
+"color": "deep medium",
+"huse": "Burgundy",
+"clarity": "Clear",
+"viscosity": "low"
+},
+"aromas": {
+"fruit": ["Black Fruit", "Cherry"],
+"non_fruit": ["Pepper", "Wood"],
+"extra_notes": []
+},
+"palate": {
+"dry_sweet": "Dry med",
+"light_body_full_body": "full",
+"low_acid_high_acid": ": med tannic",
+"soft_tannins_firm_tannins": "moderate feel dry",
+"simple_complex": "",
+"short_finish_long_finish": "long hate the taste it leaves in your mouth"
+},
+"vibes_personality": {
+"vibeField1": "",
+"vibeField2": "Can't close // big name carrier tho",
+"vibeField3": ""
+},
+"rating": 5,
+"personal_notes": ""
+},
+{
+"taster": "Grant",
+"wine_basics": {
+"Producer": "7 Deadly Zins",
+"vintage": "2022",
+"grape_s": "Zinfandel",
+"region_country": "Lodi Old Vine / California, USA",
+"price": "$12",
+"where_we_tasted_it": "Home"
+},
+"appearance": {
+"color": "Deep",
+"hue": "Burgundy",
+"clarity": "Slightly hazy",
+"viscosity": "Medium"
+},
+"aromas": {
+"fruit": ["Black Cherry", "Plum", "Aged Fruit", "Strawberry"],
+"non_fruit": ["Oak", "Cardamom", "Baking spice", "Potting Soil"],
+"extra_notes": []
+},
+"palate": {
+"dry_sweet": "7/10",
+"light_body_full_body": "Med-Light",
+"low_acid_high_acid": "Low",
+"soft_tannins_firm_tannins": "Medium",
+"simple_complex": "4/10",
+"short_finish_long_finish": "Medium"
+},
+"vibes_personality": {
+"vibeField1": "Kind, Somewhat Reserved, Gentle",
+"vibeField2": "Sitting by a hearth Fire",
+"vibeField3": "Yes / Maybe"
+},
+"rating": "7",
+"personal_notes": "Very cute romantic well decorated lc mesa apartment. Salmon Bowl, I think thats all shrooms. Miso Ramen."
+},
+{
+  "taster": "Kyle",
+  "wine_basics": {
+    "Producer": "7 Deadly Zins",
+    "vintage": "2022",
+    "grape_s": "Zinfandel",
+    "region_country": "Lodi Old Vine",
+    "price": "$12",
+    "where_we_tasted_it": "Home, my husband"
+  },
+  "appearance": {
+    "color": "Deep",
+    "hue": "Deep Burgundy",
+    "clarity": "",
+    "viscosity": "Long, quick and teasing"
+  },
+  "aromas": {
+    "fruit": ["Plum", "Blackberry", "Blueberry", "Strawberry"],
+    "non_fruit": ["Pepper", "a little smokey", "baking spice", "smokey lacking space"],
+    "extra_notes": ["Late night farmers market w/ lots of fresh berries"]
+  },
+  "palate": {
+    "dry_sweet": "Medium",
+    "light_body_full_body": "Medium",
+    "low_acid_high_acid": "Low",
+    "soft_tannins_firm_tannins": "Medium to low",
+    "simple_complex": "Medium",
+    "short_finish_long_finish": "Medium"
+  },
+  "vibes_personality": {
+    "vibeField1": "At first I would be confused but let my guard down + enjoy. It would feel warm & enveloping.",
+    "vibeField2": "Sitting by a hearth Fire",
+    "vibeField3": "Yes / Maybe / Absolutely"
+  },
+  "rating": "7",
+  "personal_notes": "It would taste better if I could taste you too i)"
+},
+{
+  "taster": "Grant",
+  "wine_basics": {
+    "Producer": "7 Deadly Zins",
+    "vintage": "2022",
+    "grape_s": "Zinfandel",
+    "region_country": "Lodi Old Vine",
+    "price": "$12",
+    "where_we_tasted_it": "Home"
+  },
+  "appearance": {
+    "color": "Deep",
+    "hue": "Burgundy",
+    "clarity": "Slightly hazy",
+    "viscosity": "Medium"
+  },
+  "aromas": {
+    "fruit": ["Black Cherry", "Plum", "Aged Fruit", "Strawberry"],
+    "non_fruit": ["Pepper", "a little smokey", "baking spice", "smokey lacking space"],
+    "extra_notes": ["Late night farmers market w/ lots of fresh berries"]
+  },
+  "palate": {
+    "dry_sweet": "Medium",
+    "light_body_full_body": "Medium",
+    "low_acid_high_acid": "Low",
+    "soft_tannins_firm_tannins": "Medium to low",
+    "simple_complex": "Medium",
+    "short_finish_long_finish": "Medium"
+  },
+  "vibes_personality": {
+    "vibeField1": "Kind Somewhat Reserved Gentle",
+    "vibeField2": "Sitting by a hearth Fire",
+    "vibeField3": "Yes / Maybe"
+  },
+  "rating": "7",
+  "personal_notes": "Very cute romantic well decorated lc mesa apartment. Salmon Bowl, I think thats all shrooms. Miso Ramen."
 }
+
 ]
