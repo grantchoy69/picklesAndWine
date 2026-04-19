@@ -258,5 +258,78 @@
     "rating": "7",
     "personal_notes": "Very cute romantic well decorated lc mesa apartment. Salmon Bowl, I think thats all shrooms. Miso Ramen."
   }
-
+  {
+  "taster": "Grant",
+  "wine_basics": {
+    "Producer": "Monte Xanic",
+    "vintage": "2024",
+    "grape_s": "Chenin Blanc",
+    "region_country": "Guadalupe Valley",
+    "price": "Gift",
+    "where_we_tasted_it": "Home"
+  },
+  "appearance": {
+    "color": "Pale",
+    "hue": "Yellow",
+    "clarity": "Slightly hazy",
+    "viscosity": "Medium"
+  },
+  "aromas": {
+    "fruit": ["Apple", "Pear", "Lemon"],
+    "non_fruit": ["Buttery", "Bell pepper", "A hint of Residual Sugar, refermented in bottle but not in a classy way"],
+    "extra_notes": []
+  },
+  "palate": {
+    "dry_sweet": "3/10",
+    "light_body_full_body": "3/10",
+    "low_acid_high_acid": "2/10",
+    "soft_tannins_firm_tannins": "3/10",
+    "simple_complex": "4/10",
+    "short_finish_long_finish": "3/10"
+  },
+  "vibes_personality": {
+    "vibeField1": "Over eager",
+    "vibeField2": "Hot summer Mexican day",
+    "vibeField3": "No"
+  },
+  "rating": "3",
+  "personal_notes": "Bad wine making. Didn't dry before bottling grapes, pulled late, minerality that is unpleasant. I think pulled late caused no acidity and not letting run fully dry hurt it. I think I would like the varietal if made well, but I did not love this expression. I think as an exersize need to try a very well made Chenin Blanc. hope my wife isnt trying to bang this AI note writer though"
+}
+{
+  "taster": "Kyle",
+  "wine_basics": {
+    "Producer": "Monte Xanic",
+    "vintage": "2024",
+    "grape_s": "Chenin Blanc",
+    "region_country": "Valle de Guadalupe / Baja CA",
+    "price": "",
+    "where_we_tasted_it": "Home"
+  },
+  "appearance": {
+    "color": "Pale",
+    "hue": "Gold",
+    "clarity": "",
+    "viscosity": "Slow + tempting"
+  },
+  "aromas": {
+    "fruit": ["Gardenias (?)", "Apple / green apple", "Honey", "Lime"],
+    "non_fruit": ["Wet cement after it rains"],
+    "extra_notes": ["Not a fan, turned off"]
+  },
+  "palate": {
+    "dry_sweet": "Dry",
+    "light_body_full_body": "Light",
+    "low_acid_high_acid": "High, electric spark",
+    "soft_tannins_firm_tannins": "",
+    "simple_complex": "Layered and alive",
+    "short_finish_long_finish": "Long, refreshing linger"
+  },
+  "vibes_personality": {
+    "vibeField1": "Teasing but annoyed. It has all the right ideas but no execution.",
+    "vibeField2": "",
+    "vibeField3": "No"
+  },
+  "rating": "",
+  "personal_notes": "the writer of these varietal notes has such a way with words. i really feel like they hear and understand me, through words, through wine, through it all"
+}
 ]
