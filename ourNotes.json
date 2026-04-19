@@ -1,9 +1,9 @@
 [
   {
-    "taster" : "Grant",
+    "taster": "Grant",
     "wine_basics": {
-      "Producer" : "The Collection",
-      "vintage": 2021,
+      "Producer": "The Collection",
+      "vintage": "2021",
       "grape_s": "Pinot Noir",
       "region_country": "Monterey",
       "price": "$11",
@@ -16,59 +16,59 @@
       "viscosity": "Medium"
     },
     "aromas": {
-      "fruit": ["Cherry", "Sour Cherry", "Cranberry", "orange"],
-      "non_fruit": ["Orange rind", "faint wood/spice", "vegetable like asparagus"],
-      "extra_notes": ["Dried cranberry", "baking spices", "chocolate"]
+      "fruit": ["Cherry", "Sour Cherry", "Cranberry", "Orange"],
+      "non_fruit": ["Orange rind", "Faint wood/spice", "Vegetable like asparagus"],
+      "extra_notes": ["Dried cranberry", "Baking spices", "Chocolate"]
     },
     "palate": {
       "dry_sweet": "Dry",
       "light_body_full_body": "Medium",
-      "low_acid_high_acid": "Med",
+      "low_acid_high_acid": "Medium",
       "soft_tannins_firm_tannins": "Soft",
       "simple_complex": "Simple",
-      "short_finish_long_finish": "Med/short"
+      "short_finish_long_finish": "Medium/Short"
     },
     "vibes_personality": {
-      "vibeField1": "Kind of generic guy. Like comfort of the known. Very satisfying but predictable, if this wine had a wife, shed probably have a hard time paying attention to him",
-      "vibeField2": "average weeknight / nothing special, good price, no issues",
-      "vibeField3": true
+      "vibeField1": "Kind of generic guy. Like comfort of the known. Very satisfying but predictable — if this wine had a wife, she’d probably have a hard time paying attention to him.",
+      "vibeField2": "Average weeknight / nothing special, good price, no issues",
+      "vibeField3": ""
     },
     "rating": 6,
-    "personal_notes": "Wow, Kyle kept looking at the notes and smiling, and re-reading them. i think shes having a lot of fun with the tasting"
+    "personal_notes": "Wow, Kyle kept looking at the notes and smiling, and re-reading them. I think she’s having a lot of fun with the tasting."
   },
   {
     "taster": "Kyle",
     "wine_basics": {
       "Producer": "The Collection",
-      "vintage": 2021,
+      "vintage": "2021",
       "grape_s": "Pinot Noir",
       "region_country": "Monterey",
-      "price": "11",
+      "price": "$11",
       "where_we_tasted_it": "Home"
     },
     "appearance": {
-      "color": "Pale-medium Ruby",
+      "color": "Pale-medium",
+      "huse": "Ruby",
       "clarity": "Clear",
-      "clarity": "",
-      "viscosity": ""
+      "viscosity": "Medium"
     },
     "aromas": {
       "fruit": ["Cherry", "Red/Pomegranate", "Sour cherry"],
-      "non_fruit": ["Orange", "orange rind faint wood/Spice", "Vegetable like spice"],
-      "extra_notes": ["dried cranberry", "baking spices"]
+      "non_fruit": ["Orange", "Orange rind", "Faint wood/spice", "Vegetable like spice"],
+      "extra_notes": ["Dried cranberry", "Baking spices"]
     },
     "palate": {
-      "dry_sweet": "dry-ish / medium",
-      "light_body_full_body": "medium",
-      "low_acid_high_acid": "med",
-      "soft_tannins_firm_tannins": "soft",
-      "simple_complex": "simple",
-      "short_finish_long_finish": "med/short"
+      "dry_sweet": "Dry-ish / medium",
+      "light_body_full_body": "Medium",
+      "low_acid_high_acid": "Medium",
+      "soft_tannins_firm_tannins": "Soft",
+      "simple_complex": "Simple",
+      "short_finish_long_finish": "Medium/Short"
     },
     "vibes_personality": {
-      "vibeField1": "Nothing spectacular run of the mill guy",
-      "vibeField2": "Average week night/nothing special",
-      "vibeField3": true
+      "vibeField1": "Nothing spectacular — run of the mill guy",
+      "vibeField2": "Average weeknight / nothing special",
+      "vibeField3": ""
     },
     "rating": 6,
     "personal_notes": "This tasting was so fun! The vibes + personality insights were thoughtful + interesting. I loved listening + learning more about this. Can't wait for the next tasting ;)"
@@ -78,14 +78,14 @@
     "wine_basics": {
       "Producer": "The Collection",
       "vintage": "2022",
-      "grape_s": "Cab Sauv",
-      "region_country": "CA",
+      "grape_s": "Cabernet Sauvignon",
+      "region_country": "California",
       "price": "$14",
       "where_we_tasted_it": "Home"
     },
     "appearance": {
       "color": "Deep",
-      "huse": "purple medium",
+      "huse": "Purple-medium",
       "clarity": "Cloudy",
       "viscosity": "Low"
     },
@@ -97,18 +97,18 @@
     "palate": {
       "dry_sweet": "Dry",
       "light_body_full_body": "Full",
-      "low_acid_high_acid": "Low to med",
-      "soft_tannins_firm_tannins": "Soft to med",
+      "low_acid_high_acid": "Low to medium",
+      "soft_tannins_firm_tannins": "Soft to medium",
       "simple_complex": "Complex",
       "short_finish_long_finish": "Long"
     },
     "vibes_personality": {
-      "vibeField1": "Medium to small penis. Horny but doesn't know what to do with it. Heavy but awkward close",
+      "vibeField1": "Medium to small penis. Horny but doesn't know what to do with it. Heavy but awkward close.",
       "vibeField2": "A boring date night",
       "vibeField3": "No, but I'd like to try one close"
     },
     "rating": "It was fine / Not for me",
-    "personal_notes": "Id buy if it if it was on sale"
+    "personal_notes": "I'd buy it if it was on sale."
   },
   {
     "taster": "Grant",
@@ -116,69 +116,69 @@
       "Producer": "The Collection",
       "vintage": "2022",
       "grape_s": "Tempranillo",
-      "region_country": "Castilla y Leon",
+      "region_country": "Castilla y León, Spain",
       "price": "$14",
       "where_we_tasted_it": "Home"
     },
     "appearance": {
       "color": "Deep",
-      "huse": "purple medium",
-      "clarity": "Cloudy",
-      "viscosity": "Low"
+      "huse": "Purple-medium",
+      "clarity": "Clear",
+      "viscosity": "Medium"
     },
     "aromas": {
-      "fruit": ["Plum", "Dried fruit", "Cherry"],
-      "non_fruit": ["Leather", "Oaky"],
-      "extra_notes": []
+      "fruit": ["Cherry", "Plum", "Dried fig"],
+      "non_fruit": ["Leather", "Tobacco", "Dried herbs", "Vanilla"],
+      "extra_notes": ["Oak spice"]
     },
     "palate": {
       "dry_sweet": "Dry",
-      "light_body_full_body": "Full",
-      "low_acid_high_acid": "Low to med",
-      "soft_tannins_firm_tannins": "Soft to med",
-      "simple_complex": "Complex",
-      "short_finish_long_finish": "Long"
+      "light_body_full_body": "Medium to full",
+      "low_acid_high_acid": "Medium",
+      "soft_tannins_firm_tannins": "Medium",
+      "simple_complex": "Medium",
+      "short_finish_long_finish": "Medium"
     },
     "vibes_personality": {
-      "vibeField1": "Medium to small penis. Horny but doesn't know what to do with it. Heavy but awkward close",
-      "vibeField2": "A boring date night",
-      "vibeField3": "No, but I'd like to try one close"
+      "vibeField1": "Grounded, composed, quietly confident. Traditional and reassuring.",
+      "vibeField2": "Steady presence that grows more interesting the longer you linger",
+      "vibeField3": ""
     },
-    "rating": "It was fine / Not for me",
-    "personal_notes": ""
+    "rating": 6,
+    "personal_notes": "Solid structure. Would be much better with food — grilled lamb or tapas."
   },
   {
-    "taster" : "Kyle",
+    "taster": "Kyle",
     "wine_basics": {
-      "Producer" : "Collection",
+      "Producer": "The Collection",
       "vintage": "2022",
-      "grape_s": "Cab Sauv",
+      "grape_s": "Cabernet Sauvignon",
       "region_country": "CA Fresno",
       "price": "",
       "where_we_tasted_it": "Home"
     },
     "appearance": {
-      "color": "deep medium",
+      "color": "Deep medium",
       "huse": "Burgundy",
       "clarity": "Clear",
-      "viscosity": "low"
+      "viscosity": "Low"
     },
     "aromas": {
-      "fruit": ["Black Fruit", "Cherry"],
+      "fruit": ["Black fruit", "Cherry"],
       "non_fruit": ["Pepper", "Wood"],
       "extra_notes": []
     },
     "palate": {
-      "dry_sweet": "Dry med",
-      "light_body_full_body": "full",
-      "low_acid_high_acid": ": med tannic",
-      "soft_tannins_firm_tannins": "moderate feel dry",
+      "dry_sweet": "Dry medium",
+      "light_body_full_body": "Full",
+      "low_acid_high_acid": "Medium",
+      "soft_tannins_firm_tannins": "Moderate, feels dry",
       "simple_complex": "",
-      "short_finish_long_finish": "long hate the taste it leaves in your mouth"
+      "short_finish_long_finish": "Long — hate the taste it leaves in your mouth"
     },
     "vibes_personality": {
-      "vibeField1": "",
-      "vibeField2": "Can't close // big name carrier tho",
+      "vibeField1": "Can't close // big name carrier though",
+      "vibeField2": "",
       "vibeField3": ""
     },
     "rating": 5,
@@ -196,14 +196,14 @@
     },
     "appearance": {
       "color": "Deep",
-      "hue": "Deep Burgundy",
-      "clarity": "",
+      "huse": "Deep Burgundy",
+      "clarity": "Clear",
       "viscosity": "Long, quick and teasing"
     },
     "aromas": {
       "fruit": ["Plum", "Blackberry", "Blueberry", "Strawberry"],
-      "non_fruit": ["Pepper", "a little smokey", "baking spice", "smokey lacking space"],
-      "extra_notes": ["Late night farmers market w/ lots of fresh berries"]
+      "non_fruit": ["Pepper", "A little smoky", "Baking spice"],
+      "extra_notes": ["Late night farmers market with lots of fresh berries"]
     },
     "palate": {
       "dry_sweet": "Medium",
@@ -215,11 +215,11 @@
     },
     "vibes_personality": {
       "vibeField1": "At first I would be confused but let my guard down + enjoy. It would feel warm & enveloping.",
-      "vibeField2": "Sitting by a hearth Fire",
+      "vibeField2": "Sitting by a hearth fire",
       "vibeField3": "Yes / Maybe / Absolutely"
     },
-    "rating": "7",
-    "personal_notes": "It would taste better if I could taste you too i)"
+    "rating": 7,
+    "personal_notes": "It would taste better if I could taste you too ;)"
   },
   {
     "taster": "Grant",
@@ -233,14 +233,14 @@
     },
     "appearance": {
       "color": "Deep",
-      "hue": "Burgundy",
+      "huse": "Burgundy",
       "clarity": "Slightly hazy",
       "viscosity": "Medium"
     },
     "aromas": {
-      "fruit": ["Black Cherry", "Plum", "Aged Fruit", "Strawberry"],
-      "non_fruit": ["Pepper", "a little smokey", "baking spice", "smokey lacking space"],
-      "extra_notes": ["Late night farmers market w/ lots of fresh berries"]
+      "fruit": ["Black cherry", "Plum", "Aged fruit", "Strawberry"],
+      "non_fruit": ["Pepper", "A little smoky", "Baking spice"],
+      "extra_notes": ["Late night farmers market with lots of fresh berries"]
     },
     "palate": {
       "dry_sweet": "Medium",
@@ -251,85 +251,85 @@
       "short_finish_long_finish": "Medium"
     },
     "vibes_personality": {
-      "vibeField1": "Kind Somewhat Reserved Gentle",
-      "vibeField2": "Sitting by a hearth Fire",
+      "vibeField1": "Kind, somewhat reserved, gentle",
+      "vibeField2": "Sitting by a hearth fire",
       "vibeField3": "Yes / Maybe"
     },
-    "rating": "7",
-    "personal_notes": "Very cute romantic well decorated lc mesa apartment. Salmon Bowl, I think thats all shrooms. Miso Ramen."
+    "rating": 7,
+    "personal_notes": "Very cute romantic well decorated La Mesa apartment. Salmon bowl, I think that’s all shrooms. Miso ramen."
   },
   {
-  "taster": "Grant",
-  "wine_basics": {
-    "Producer": "Monte Xanic",
-    "vintage": "2024",
-    "grape_s": "Chenin Blanc",
-    "region_country": "Guadalupe Valley",
-    "price": "Gift",
-    "where_we_tasted_it": "Home"
+    "taster": "Grant",
+    "wine_basics": {
+      "Producer": "Monte Xanic",
+      "vintage": "2024",
+      "grape_s": "Chenin Blanc",
+      "region_country": "Guadalupe Valley",
+      "price": "Gift",
+      "where_we_tasted_it": "Home"
+    },
+    "appearance": {
+      "color": "Pale",
+      "huse": "Yellow",
+      "clarity": "Slightly hazy",
+      "viscosity": "Medium"
+    },
+    "aromas": {
+      "fruit": ["Apple", "Pear", "Lemon"],
+      "non_fruit": ["Buttery", "Bell pepper", "Hint of residual sugar"],
+      "extra_notes": ["Refermented in bottle but not in a classy way"]
+    },
+    "palate": {
+      "dry_sweet": "Slightly sweet (3/10)",
+      "light_body_full_body": "Light (3/10)",
+      "low_acid_high_acid": "Low (2/10)",
+      "soft_tannins_firm_tannins": "N/A",
+      "simple_complex": "Medium (4/10)",
+      "short_finish_long_finish": "Medium (3/10)"
+    },
+    "vibes_personality": {
+      "vibeField1": "Over eager",
+      "vibeField2": "Hot summer Mexican day",
+      "vibeField3": "No"
+    },
+    "rating": 3,
+    "personal_notes": "Bad winemaking. Didn't dry before bottling, pulled late. Minerality that is unpleasant. I would like the varietal if made well — need to try a very well-made Chenin Blanc."
   },
-  "appearance": {
-    "color": "Pale",
-    "hue": "Yellow",
-    "clarity": "Slightly hazy",
-    "viscosity": "Medium"
-  },
-  "aromas": {
-    "fruit": ["Apple", "Pear", "Lemon"],
-    "non_fruit": ["Buttery", "Bell pepper", "A hint of Residual Sugar, refermented in bottle but not in a classy way"],
-    "extra_notes": []
-  },
-  "palate": {
-    "dry_sweet": "3/10",
-    "light_body_full_body": "3/10",
-    "low_acid_high_acid": "2/10",
-    "soft_tannins_firm_tannins": "3/10",
-    "simple_complex": "4/10",
-    "short_finish_long_finish": "3/10"
-  },
-  "vibes_personality": {
-    "vibeField1": "Over eager",
-    "vibeField2": "Hot summer Mexican day",
-    "vibeField3": "No"
-  },
-  "rating": "3",
-  "personal_notes": "Bad wine making. Didn't dry before bottling grapes, pulled late, minerality that is unpleasant. I think pulled late caused no acidity and not letting run fully dry hurt it. I think I would like the varietal if made well, but I did not love this expression. I think as an exersize need to try a very well made Chenin Blanc. hope my wife isnt trying to bang this AI note writer though"
-},
-{
-  "taster": "Kyle",
-  "wine_basics": {
-    "Producer": "Monte Xanic",
-    "vintage": "2024",
-    "grape_s": "Chenin Blanc",
-    "region_country": "Valle de Guadalupe / Baja CA",
-    "price": "",
-    "where_we_tasted_it": "Home"
-  },
-  "appearance": {
-    "color": "Pale",
-    "hue": "Gold",
-    "clarity": "",
-    "viscosity": "Slow + tempting"
-  },
-  "aromas": {
-    "fruit": ["Gardenias (?)", "Apple / green apple", "Honey", "Lime"],
-    "non_fruit": ["Wet cement after it rains"],
-    "extra_notes": ["Not a fan, turned off"]
-  },
-  "palate": {
-    "dry_sweet": "Dry",
-    "light_body_full_body": "Light",
-    "low_acid_high_acid": "High, electric spark",
-    "soft_tannins_firm_tannins": "",
-    "simple_complex": "Layered and alive",
-    "short_finish_long_finish": "Long, refreshing linger"
-  },
-  "vibes_personality": {
-    "vibeField1": "Teasing but annoyed. It has all the right ideas but no execution.",
-    "vibeField2": "",
-    "vibeField3": "No"
-  },
-  "rating": "",
-  "personal_notes": "the writer of these varietal notes has such a way with words. i really feel like they hear and understand me, through words, through wine, through it all"
-}
+  {
+    "taster": "Kyle",
+    "wine_basics": {
+      "Producer": "Monte Xanic",
+      "vintage": "2024",
+      "grape_s": "Chenin Blanc",
+      "region_country": "Valle de Guadalupe / Baja CA",
+      "price": "Gift",
+      "where_we_tasted_it": "Home"
+    },
+    "appearance": {
+      "color": "Pale",
+      "huse": "Gold",
+      "clarity": "Clear",
+      "viscosity": "Slow + tempting"
+    },
+    "aromas": {
+      "fruit": ["Gardenias", "Apple / green apple", "Honey", "Lime"],
+      "non_fruit": ["Wet cement after it rains"],
+      "extra_notes": ["Not a fan, turned off"]
+    },
+    "palate": {
+      "dry_sweet": "Dry",
+      "light_body_full_body": "Light",
+      "low_acid_high_acid": "High, electric spark",
+      "soft_tannins_firm_tannins": "N/A",
+      "simple_complex": "Layered and alive",
+      "short_finish_long_finish": "Long, refreshing linger"
+    },
+    "vibes_personality": {
+      "vibeField1": "Teasing but annoyed. It has all the right ideas but no execution.",
+      "vibeField2": "",
+      "vibeField3": "No"
+    },
+    "rating": "",
+    "personal_notes": "The writer of these varietal notes has such a way with words. I really feel like they hear and understand me, through words, through wine, through it all."
+  }
 ]
