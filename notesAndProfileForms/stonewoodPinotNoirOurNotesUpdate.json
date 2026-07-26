@@ -1,0 +1,89 @@
+[
+  {
+    "taster": "Grant",
+    "wine_basics": {
+      "Producer": "Stonewood",
+      "vintage": "Unknown",
+      "grape_s": "Pinot Noir",
+      "region_country": "Sonoma County, California",
+      "price": "$28",
+      "where_we_tasted_it": "Home, with pizza"
+    },
+    "appearance": {
+      "color": "Medium",
+      "huse": "Ruby",
+      "clarity": "Clear",
+      "viscosity": "Low"
+    },
+    "aromas": {
+      "fruit": [
+        "Cherry",
+        "Plum",
+        "Date"
+      ],
+      "non_fruit": [
+        "Black pepper",
+        "Green bell pepper"
+      ],
+      "extra_notes": []
+    },
+    "palate": {
+      "dry_sweet": "Dry (3/10)",
+      "light_body_full_body": "Light (2/10)",
+      "low_acid_high_acid": "Low to medium (4/10)",
+      "soft_tannins_firm_tannins": "Soft to medium (4/10)",
+      "simple_complex": "Simple (2/10)",
+      "short_finish_long_finish": "Medium to long (6/10)"
+    },
+    "vibes_personality": {
+      "vibeField1": "Laid back, easygoing, nice guy to have around at a party, but doesn't make or break it.",
+      "vibeField2": "Dinner at home with some pizza, with just my wife. Very good fit for tonight.",
+      "vibeField3": "Yes"
+    },
+    "rating": 7.5,
+    "personal_notes": "Very tart. After a bite of pizza with cranberry toppings, the tartness drops off. More of a dark chocolate vibe. Tastes richer, maybe creamier or \"deeper.\""
+  },
+  {
+    "taster": "Kyle",
+    "wine_basics": {
+      "Producer": "Stonewood",
+      "vintage": "Unknown",
+      "grape_s": "Pinot Noir",
+      "region_country": "Sonoma County, California",
+      "price": "$28",
+      "where_we_tasted_it": "Home, with pizza"
+    },
+    "appearance": {
+      "color": "",
+      "huse": "",
+      "clarity": "",
+      "viscosity": ""
+    },
+    "aromas": {
+      "fruit": [],
+      "non_fruit": [
+        "Pepper",
+        "Chocolate",
+        "Cilantro?"
+      ],
+      "extra_notes": [
+        "The first breath brought back the memory that Pinot Noir was one of the first wines we tasted together."
+      ]
+    },
+    "palate": {
+      "dry_sweet": "Dry (2/10)",
+      "light_body_full_body": "Medium (5/10)",
+      "low_acid_high_acid": "High (7/10)",
+      "soft_tannins_firm_tannins": "Firm (7/10)",
+      "simple_complex": "Moderately simple (4/10)",
+      "short_finish_long_finish": "Long (7/10)"
+    },
+    "vibes_personality": {
+      "vibeField1": "It would intrigue me to strike up a conversation, but the night gets more interesting over time.",
+      "vibeField2": "",
+      "vibeField3": "Maybe"
+    },
+    "rating": 7,
+    "personal_notes": "I like the wine tasting, but could use something more interesting next."
+  }
+]
