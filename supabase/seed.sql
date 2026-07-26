@@ -1,0 +1,2 @@
+-- Stable household, people, metric, prompt, and fault seeds live in migrations.
+-- Auth membership rows are added only after Gracie and Kyle have real auth user UUIDs.

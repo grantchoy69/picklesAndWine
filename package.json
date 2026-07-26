@@ -1,0 +1,19 @@
+{
+  "name": "grant-and-kyle-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "db:test:migrations": "node scripts/validateMigrations.mjs",
+    "wine:import:dry-run": "node scripts/importHistoricalWine.mjs",
+    "wine:import:report": "node scripts/importHistoricalWine.mjs --report tmp/historicalWineImportReport.json",
+    "wine:import:sql": "node scripts/importHistoricalWine.mjs --report tmp/historicalWineImportReport.json --emit-sql tmp/historicalWineImport.sql"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.3.14"
+  }
+}
