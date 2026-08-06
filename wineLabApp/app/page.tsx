@@ -5,6 +5,7 @@ import {
   ArrowRight,
   BookOpen,
   CalendarDays,
+  Check,
   ChevronRight,
   Compass,
   FlaskConical,
@@ -16,14 +17,32 @@ import {
   MessageCircle,
   Plus,
   Sparkles,
+  Trash2,
   Wine,
   X,
 } from "lucide-react";
 import type { Session } from "@supabase/supabase-js";
-import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  FormEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { supabase } from "./supabase";
 
 type View = "overview" | "history" | "tasting" | "detail";
+
+type DraftStatus = "idle" | "restored" | "saved" | "unavailable";
+
+type SavedTastingDraft = {
+  version: 1;
+  savedAt: string;
+  fields: Record<string, string>;
+};
+
+const tastingDraftVersion = 1;
 
 type Person = {
   id: number;
@@ -514,6 +533,7 @@ export default function Home() {
 
       {!loading && view === "tasting" ? (
         <NewTasting
+          draftOwnerId={authSession.user.id}
           onCancel={() => setView("overview")}
           onSaved={async (sessionId) => {
             await loadLab();
@@ -1390,14 +1410,115 @@ function ScaleSelect({
 }
 
 function NewTasting({
+  draftOwnerId,
   onCancel,
   onSaved,
 }: {
+  draftOwnerId: string;
   onCancel: () => void;
   onSaved: (sessionId: string) => Promise<void>;
 }) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [draftStatus, setDraftStatus] = useState<DraftStatus>("idle");
+  const [draftSavedAt, setDraftSavedAt] = useState<string | null>(null);
+  const [hasDraft, setHasDraft] = useState(false);
+  const draftStorageKey = `wineLab:tastingDraft:v${tastingDraftVersion}:${draftOwnerId}`;
+
+  const writeDraft = useCallback(() => {
+    const form = formRef.current;
+    if (!form) return;
+
+    const fields = Object.fromEntries(
+      Array.from(
+        form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+          "input[name], textarea[name], select[name]",
+        ),
+      ).map((field) => [field.name, field.value]),
+    );
+    const savedAt = new Date().toISOString();
+    const draft: SavedTastingDraft = {
+      version: tastingDraftVersion,
+      savedAt,
+      fields,
+    };
+
+    try {
+      window.localStorage.setItem(draftStorageKey, JSON.stringify(draft));
+      setDraftSavedAt(savedAt);
+      setHasDraft(true);
+      setDraftStatus("saved");
+    } catch {
+      setDraftStatus("unavailable");
+    }
+  }, [draftStorageKey]);
+
+  useEffect(() => {
+    const restoreFrame = window.requestAnimationFrame(() => {
+      const form = formRef.current;
+      if (!form) return;
+
+      try {
+        const rawDraft = window.localStorage.getItem(draftStorageKey);
+        if (!rawDraft) return;
+        const draft = JSON.parse(rawDraft) as Partial<SavedTastingDraft>;
+        if (
+          draft.version !== tastingDraftVersion ||
+          !draft.fields ||
+          typeof draft.fields !== "object"
+        ) {
+          return;
+        }
+
+        const formFields = form.querySelectorAll<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >("input[name], textarea[name], select[name]");
+        formFields.forEach((field) => {
+          const restoredValue = draft.fields?.[field.name];
+          if (typeof restoredValue === "string") field.value = restoredValue;
+        });
+        setDraftSavedAt(typeof draft.savedAt === "string" ? draft.savedAt : null);
+        setHasDraft(true);
+        setDraftStatus("restored");
+      } catch {
+        setDraftStatus("unavailable");
+      }
+    });
+
+    return () => window.cancelAnimationFrame(restoreFrame);
+  }, [draftStorageKey]);
+
+  useEffect(() => {
+    const saveWhenHidden = () => {
+      if (document.visibilityState === "hidden") writeDraft();
+    };
+
+    window.addEventListener("pagehide", writeDraft);
+    document.addEventListener("visibilitychange", saveWhenHidden);
+    return () => {
+      window.removeEventListener("pagehide", writeDraft);
+      document.removeEventListener("visibilitychange", saveWhenHidden);
+    };
+  }, [writeDraft]);
+
+  function keepDraftAndExit() {
+    writeDraft();
+    onCancel();
+  }
+
+  function discardDraft() {
+    if (!window.confirm("Discard this tasting draft from this device?")) return;
+    try {
+      window.localStorage.removeItem(draftStorageKey);
+    } catch {
+      // The form can still be reset even when browser storage is unavailable.
+    }
+    formRef.current?.reset();
+    setDraftSavedAt(null);
+    setHasDraft(false);
+    setDraftStatus("idle");
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -1435,6 +1556,12 @@ function NewTasting({
       return;
     }
 
+    try {
+      window.localStorage.removeItem(draftStorageKey);
+    } catch {
+      // A completed tasting is authoritative even if local draft cleanup is blocked.
+    }
+    setHasDraft(false);
     await onSaved(String(data));
   }
 
@@ -1446,13 +1573,46 @@ function NewTasting({
           <h1>Start a tasting</h1>
           <p>Capture the bottle once. Preserve two distinct points of view.</p>
         </div>
-        <button className="close-button" type="button" onClick={onCancel}>
+        <button className="close-button" type="button" onClick={keepDraftAndExit}>
           <X />
-          <span className="sr-only">Cancel tasting</span>
+          <span className="sr-only">Keep draft and close tasting</span>
         </button>
       </div>
 
-      <form className="tasting-form" onSubmit={handleSubmit}>
+      <form
+        className="tasting-form"
+        onSubmit={handleSubmit}
+        onInput={writeDraft}
+        onChange={writeDraft}
+        ref={formRef}
+      >
+        <div className={`draft-status ${draftStatus}`} aria-live="polite">
+          <span>
+            {draftStatus === "unavailable" ? (
+              "Safari blocked draft storage on this device."
+            ) : draftStatus === "restored" ? (
+              <><Check aria-hidden="true" /> Draft restored from this device.</>
+            ) : draftStatus === "saved" ? (
+              <><Check aria-hidden="true" /> Draft saved on this device.</>
+            ) : (
+              "Your tasting will save automatically on this device."
+            )}
+            {draftSavedAt && draftStatus !== "unavailable" ? (
+              <small>
+                {new Intl.DateTimeFormat("en-US", {
+                  hour: "numeric",
+                  minute: "2-digit",
+                }).format(new Date(draftSavedAt))}
+              </small>
+            ) : null}
+          </span>
+          {hasDraft ? (
+            <button type="button" onClick={discardDraft}>
+              <Trash2 aria-hidden="true" />
+              Discard draft
+            </button>
+          ) : null}
+        </div>
         <section className="form-section">
           <div className="section-number">01</div>
           <div className="section-content">
@@ -1565,8 +1725,8 @@ function NewTasting({
 
         {message ? <p className="form-message error">{message}</p> : null}
         <div className="form-actions">
-          <button className="ghost-button" type="button" onClick={onCancel}>
-            Save no eggs
+          <button className="ghost-button" type="button" onClick={keepDraftAndExit}>
+            Keep draft &amp; exit
           </button>
           <button className="primary-button" disabled={saving}>
             {saving ? <LoaderCircle className="spin" /> : <Plus />}
