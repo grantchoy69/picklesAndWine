@@ -8,7 +8,10 @@
     "db:test:migrations": "node scripts/validateMigrations.mjs",
     "wine:import:dry-run": "node scripts/importHistoricalWine.mjs",
     "wine:import:report": "node scripts/importHistoricalWine.mjs --report tmp/historicalWineImportReport.json",
-    "wine:import:sql": "node scripts/importHistoricalWine.mjs --report tmp/historicalWineImportReport.json --emit-sql tmp/historicalWineImport.sql"
+    "wine:import:sql": "node scripts/importHistoricalWine.mjs --report tmp/historicalWineImportReport.json --emit-sql tmp/historicalWineImport.sql",
+    "pickle:import:dry-run": "node scripts/importHistoricalPickles.mjs",
+    "pickle:import:report": "node scripts/importHistoricalPickles.mjs --report tmp/historicalPickleImportReport.json",
+    "pickle:import:sql": "node scripts/importHistoricalPickles.mjs --report tmp/historicalPickleImportReport.json --emit-sql tmp/historicalPickleImport.sql"
   },
   "engines": {
     "node": ">=20"
