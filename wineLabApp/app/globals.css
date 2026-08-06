@@ -853,6 +853,145 @@ select:focus-visible {
   white-space: pre-wrap;
 }
 
+.price-meta {
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  color: var(--copper) !important;
+  padding: 4px 10px;
+}
+
+.review-analysis {
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-block {
+  border-top: 1px solid var(--line-soft);
+  padding: 26px 0 4px;
+}
+
+.analysis-block:first-child {
+  border-top: 0;
+  padding-top: 4px;
+}
+
+.analysis-block h3 {
+  color: var(--copper);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0 0 18px;
+}
+
+.observation-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.observation-grid > div {
+  background: rgba(10, 8, 11, 0.35);
+  border: 1px solid rgba(206, 113, 128, 0.12);
+  padding: 12px 14px;
+}
+
+.observation-grid dt,
+.vibes-readout small,
+.aroma-groups h4 {
+  color: var(--muted);
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.observation-grid dd {
+  color: #e3d5cf;
+  margin: 0;
+}
+
+.analysis-prose,
+.vibes-readout p {
+  color: #d7c8c2;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.aroma-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.descriptor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.descriptor-list span {
+  background: rgba(143, 24, 48, 0.15);
+  border: 1px solid rgba(206, 113, 128, 0.22);
+  border-radius: 999px;
+  color: #dfc9c8;
+  font-size: 0.82rem;
+  padding: 7px 10px;
+}
+
+.metric-readout-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-readout {
+  background: rgba(10, 8, 11, 0.35);
+  border: 1px solid rgba(206, 113, 128, 0.12);
+  display: grid;
+  gap: 7px;
+  padding: 13px 14px;
+}
+
+.metric-readout > span,
+.metric-readout small {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.metric-readout strong {
+  color: #e2c9ca;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.metric-track {
+  background: rgba(206, 113, 128, 0.15);
+  height: 3px;
+  overflow: hidden;
+}
+
+.metric-track i {
+  background: linear-gradient(90deg, var(--wine), var(--copper));
+  display: block;
+  height: 100%;
+}
+
+.vibes-readout > div + div {
+  border-top: 1px dotted rgba(213, 131, 88, 0.24);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.vibes-readout p {
+  margin-bottom: 0;
+}
+
+.personal-readout {
+  padding-bottom: 0;
+}
+
 .tasting-heading {
   align-items: flex-start;
   display: flex;
@@ -947,7 +1086,7 @@ select:focus-visible {
 .scientist-reviews {
   display: grid;
   gap: 22px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .review-fields {
@@ -972,6 +1111,83 @@ select:focus-visible {
 
 .review-fields .field + .field {
   margin-top: 20px;
+}
+
+.field > small {
+  color: #88787e;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.rich-review-fields {
+  background: rgba(10, 8, 11, 0.2);
+  padding: 28px;
+}
+
+.scientist-instruction {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin: 4px 0 18px;
+}
+
+.observation-group {
+  border: 0;
+  border-top: 1px solid var(--line-soft);
+  margin-top: 0;
+  padding: 0;
+}
+
+.observation-group summary {
+  align-items: center;
+  color: #e4d4ce;
+  cursor: pointer;
+  display: flex;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.35rem;
+  gap: 12px;
+  list-style: none;
+  padding: 22px 2px;
+}
+
+.observation-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.observation-group summary::after {
+  color: var(--copper);
+  content: "+";
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 1rem;
+  margin-left: auto;
+}
+
+.observation-group[open] summary::after {
+  content: "−";
+}
+
+.observation-group summary span {
+  color: var(--copper-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.62rem;
+}
+
+.observation-fields {
+  display: grid;
+  gap: 18px;
+  padding: 0 2px 26px;
+}
+
+.two-column-fields,
+.metric-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.final-observation {
+  padding: 24px 2px 0;
+}
+
+.final-observation .observation-fields {
+  padding-bottom: 0;
 }
 
 .form-actions {
@@ -1377,8 +1593,20 @@ select:focus-visible {
 
   .review-grid,
   .scientist-reviews,
-  .form-grid {
+  .form-grid,
+  .observation-grid,
+  .metric-readout-grid,
+  .two-column-fields,
+  .metric-form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .review-card {
+    padding: 24px 20px;
+  }
+
+  .rich-review-fields {
+    padding: 22px 16px;
   }
 
   .field.wide {
