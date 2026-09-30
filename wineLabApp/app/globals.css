@@ -1468,6 +1468,837 @@ select:focus-visible {
   width: 1px;
 }
 
+/* Apartment Lab domains */
+.lab-home-page {
+  padding-top: 70px;
+}
+
+.lab-home-hero {
+  align-items: center;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.6fr);
+  min-height: 340px;
+}
+
+.lab-home-hero h1,
+.area-heading h1,
+.recipe-detail-copy h1,
+.area-empty-state h2,
+.recipe-detail-grid h2 {
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-weight: 400;
+}
+
+.lab-home-hero h1 {
+  font-size: clamp(3.8rem, 7vw, 6.9rem);
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  margin: 22px 0;
+}
+
+.lab-home-intro {
+  color: var(--muted);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.28rem;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 680px;
+}
+
+.home-orbit {
+  aspect-ratio: 1;
+  justify-self: center;
+  max-width: 330px;
+  position: relative;
+  width: 100%;
+}
+
+.orbit-core,
+.orbit-dot,
+.home-orbit-ring {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-orbit-ring {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.home-orbit-ring.ring-one {
+  height: 58%;
+  width: 58%;
+}
+
+.home-orbit-ring.ring-two {
+  border-color: rgba(137, 156, 86, 0.25);
+  height: 92%;
+  width: 92%;
+}
+
+.orbit-core {
+  align-items: center;
+  background: radial-gradient(circle, #5d1728, #1a1017 72%);
+  border: 1px solid var(--copper);
+  border-radius: 999px;
+  box-shadow: 0 0 70px rgba(143, 24, 48, 0.26);
+  display: flex;
+  height: 96px;
+  justify-content: center;
+  width: 96px;
+}
+
+.orbit-core svg {
+  height: 34px;
+  width: 34px;
+}
+
+.orbit-dot {
+  align-items: center;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: flex;
+  height: 54px;
+  justify-content: center;
+  width: 54px;
+}
+
+.orbit-dot svg {
+  height: 22px;
+  width: 22px;
+}
+
+.dot-wine { color: var(--berry); transform: translate(78px, -130px); }
+.dot-pickle { color: #a6b86b; transform: translate(-155px, 38px); }
+.dot-kitchen { color: #e3a26b; transform: translate(82px, 82px); }
+
+.lab-module-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 52px;
+}
+
+.lab-module-card {
+  align-items: flex-start;
+  background: linear-gradient(145deg, rgba(31, 23, 29, 0.94), rgba(19, 15, 19, 0.96));
+  border: 1px solid var(--line-soft);
+  border-radius: 18px;
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  min-height: 285px;
+  overflow: hidden;
+  padding: 24px;
+  position: relative;
+  text-align: left;
+}
+
+button.lab-module-card {
+  cursor: pointer;
+}
+
+button.lab-module-card:hover {
+  border-color: var(--copper-muted);
+  transform: translateY(-3px);
+}
+
+.lab-module-card::after {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  content: "";
+  height: 160px;
+  opacity: 0.1;
+  position: absolute;
+  right: -62px;
+  top: -64px;
+  width: 160px;
+}
+
+.wine-module { color: var(--berry); }
+.pickle-module { color: #a6b86b; }
+.kitchen-module { color: #e3a26b; }
+.inventory-module { color: #8da2aa; opacity: 0.68; }
+
+.module-index {
+  font-family: var(--font-geist-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+}
+
+.module-icon {
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  display: flex;
+  height: 58px;
+  justify-content: center;
+  margin: 34px 0 30px;
+  width: 58px;
+}
+
+.module-icon svg {
+  height: 24px;
+  width: 24px;
+}
+
+.module-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.module-copy small {
+  color: currentColor;
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.module-copy strong {
+  color: var(--cream);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.module-copy > span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.area-heading {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.area-heading h1 {
+  font-size: clamp(3.3rem, 6vw, 5.7rem);
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+  margin: 15px 0 16px;
+}
+
+.area-heading > div > p:last-child {
+  color: var(--muted);
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.12rem;
+  margin: 0;
+}
+
+.kitchen-eyebrow { color: #e3a26b; }
+.pickle-eyebrow { color: #a6b86b; }
+
+.primary-button.kitchen-button {
+  background: #8b492f;
+  border-color: #e3a26b;
+}
+
+.primary-button.pickle-button {
+  background: #5e6d32;
+  border-color: #b6c777;
+}
+
+.library-controls {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin: 54px 0 28px;
+}
+
+.search-field {
+  align-items: center;
+  background: rgba(25, 19, 24, 0.8);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.search-field svg {
+  color: var(--copper-muted);
+  height: 18px;
+  width: 18px;
+}
+
+.search-field input,
+.compact-select select {
+  background: transparent;
+  border: 0;
+  color: var(--cream);
+  min-height: 50px;
+  width: 100%;
+}
+
+.search-field input:focus,
+.compact-select select:focus {
+  outline: 0;
+}
+
+.compact-select {
+  background: rgba(25, 19, 24, 0.8);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  min-width: 180px;
+  padding: 0 12px;
+}
+
+.recipe-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.recipe-card {
+  background: transparent;
+  border: 0;
+  color: var(--cream);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.recipe-photo-frame {
+  aspect-ratio: 1.18;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(227, 162, 107, 0.25), transparent 38%),
+    linear-gradient(145deg, #2a1814, #151116);
+  border: 1px solid rgba(227, 162, 107, 0.23);
+  border-radius: 56% 44% 52% 48% / 48% 56% 44% 52%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  transition: 180ms ease;
+}
+
+.recipe-card:hover .recipe-photo-frame {
+  border-color: #e3a26b;
+  transform: rotate(-1deg) scale(1.012);
+}
+
+.recipe-photo-frame img,
+.recipe-detail-image img,
+.photo-upload-field img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.recipe-monogram {
+  align-items: center;
+  color: rgba(240, 230, 219, 0.76);
+  display: flex;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 8rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.recipe-category {
+  background: rgba(12, 10, 13, 0.78);
+  border: 1px solid rgba(227, 162, 107, 0.34);
+  border-radius: 999px;
+  bottom: 16px;
+  color: #f0c09c;
+  font-size: 0.7rem;
+  left: 18px;
+  padding: 6px 11px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.recipe-card-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 8px 8px;
+}
+
+.recipe-card-copy strong {
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+}
+
+.recipe-card-copy > span {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.recipe-card-copy small {
+  color: #9d8588;
+  font-family: var(--font-geist-mono);
+  font-size: 0.69rem;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.area-empty-state {
+  align-items: center;
+  background: linear-gradient(145deg, rgba(31, 23, 29, 0.88), rgba(18, 14, 18, 0.72));
+  border: 1px solid var(--line-soft);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+  min-height: 420px;
+  padding: 56px 28px;
+  text-align: center;
+}
+
+.area-empty-state h2 {
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  margin: 14px 0 12px;
+  max-width: 760px;
+}
+
+.area-empty-state > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.empty-instrument {
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: #e3a26b;
+  display: flex;
+  height: 78px;
+  justify-content: center;
+  margin-bottom: 18px;
+  width: 78px;
+}
+
+.pickle-empty .empty-instrument { color: #a6b86b; }
+
+.area-empty-state .primary-button { margin-top: 24px; }
+
+.recipe-detail-hero {
+  align-items: center;
+  display: grid;
+  gap: 64px;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+  margin-top: 36px;
+}
+
+.recipe-detail-image {
+  align-items: center;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 30% 20%, rgba(227, 162, 107, 0.28), transparent 42%), #1d1519;
+  border: 1px solid rgba(227, 162, 107, 0.28);
+  border-radius: 56% 44% 49% 51% / 46% 58% 42% 54%;
+  color: #e3a26b;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.recipe-detail-image > svg {
+  height: 92px;
+  width: 92px;
+}
+
+.recipe-detail-copy h1 {
+  font-size: clamp(3.4rem, 6vw, 6.3rem);
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  margin: 17px 0;
+}
+
+.recipe-detail-copy > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.recipe-subtitle {
+  color: #f0c09c !important;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 1.28rem;
+}
+
+.recipe-meta-row,
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.recipe-meta-row span {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  gap: 7px;
+  margin-right: 16px;
+}
+
+.recipe-meta-row svg {
+  color: #e3a26b;
+  height: 16px;
+  width: 16px;
+}
+
+.tag-row span,
+.batch-ingredient-cloud span {
+  background: rgba(227, 162, 107, 0.08);
+  border: 1px solid rgba(227, 162, 107, 0.2);
+  border-radius: 999px;
+  color: #d8b092;
+  font-size: 0.72rem;
+  padding: 6px 10px;
+}
+
+.recipe-detail-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
+  margin-top: 72px;
+}
+
+.recipe-ingredients-panel,
+.recipe-steps-panel {
+  background: rgba(26, 20, 24, 0.78);
+  border: 1px solid var(--line-soft);
+  border-radius: 18px;
+  padding: 34px;
+}
+
+.recipe-detail-grid h2 {
+  font-size: 2.1rem;
+  margin: 8px 0 26px;
+}
+
+.recipe-ingredients-panel ul,
+.recipe-steps-panel ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recipe-ingredients-panel li {
+  border-bottom: 1px solid rgba(227, 162, 107, 0.12);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 90px 1fr;
+  padding: 14px 0;
+}
+
+.ingredient-amount {
+  color: #e3a26b;
+  font-family: var(--font-geist-mono);
+  font-size: 0.78rem;
+}
+
+.recipe-ingredients-panel li > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.recipe-ingredients-panel small {
+  color: var(--muted);
+}
+
+.recipe-steps-panel li {
+  align-items: start;
+  border-bottom: 1px solid var(--line-soft);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 34px 1fr auto;
+  padding: 18px 0;
+}
+
+.recipe-steps-panel li > span {
+  color: #e3a26b;
+  font-family: var(--font-geist-mono);
+  font-size: 0.76rem;
+}
+
+.recipe-steps-panel li p {
+  line-height: 1.65;
+  margin: 0;
+}
+
+.recipe-steps-panel li small {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.recipe-steps-panel li svg { height: 14px; width: 14px; }
+
+.source-link {
+  color: #e3a26b;
+  display: inline-block;
+  margin-top: 26px;
+}
+
+.recipe-basics-grid {
+  align-items: start;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 260px 1fr;
+}
+
+.photo-upload-field label {
+  align-items: center;
+  aspect-ratio: 1;
+  background: rgba(227, 162, 107, 0.05);
+  border: 1px dashed rgba(227, 162, 107, 0.4);
+  border-radius: 56% 44% 50% 50% / 44% 56% 44% 56%;
+  color: #e3a26b;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.photo-upload-field label > span {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  line-height: 1.4;
+  max-width: 150px;
+}
+
+.photo-upload-field input { display: none; }
+.photo-upload-field small { color: var(--muted); display: block; margin-top: 10px; text-align: center; }
+
+.section-title-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.section-title-row h2 { margin: 0; }
+
+.small-add-button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(227, 162, 107, 0.36);
+  border-radius: 999px;
+  color: #e3a26b;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.78rem;
+  gap: 6px;
+  padding: 8px 13px;
+}
+
+.small-add-button svg { height: 15px; width: 15px; }
+.pickle-add { border-color: rgba(166, 184, 107, 0.4); color: #b8c87b; }
+
+.dynamic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dynamic-row {
+  align-items: center;
+  background: rgba(10, 8, 11, 0.27);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  display: grid;
+  gap: 9px;
+  padding: 10px;
+}
+
+.ingredient-row {
+  grid-template-columns: 32px 74px 90px minmax(150px, 1.2fr) minmax(130px, 1fr) auto 38px;
+}
+
+.pickle-ingredient-list .ingredient-row {
+  grid-template-columns: 32px 74px 90px minmax(180px, 1.3fr) minmax(130px, 0.7fr) 38px;
+}
+
+.row-index {
+  color: var(--copper-muted);
+  font-family: var(--font-geist-mono);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.dynamic-row input,
+.dynamic-row textarea,
+.dynamic-row select {
+  background: #130f13;
+  border: 1px solid rgba(213, 131, 88, 0.2);
+  border-radius: 8px;
+  color: var(--cream);
+  min-height: 42px;
+  padding: 9px 10px;
+  width: 100%;
+}
+
+.optional-check {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 0.72rem;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.optional-check input { min-height: auto; width: auto; }
+
+.icon-delete {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #9c6b72;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-delete svg { height: 17px; width: 17px; }
+
+.step-row {
+  align-items: start;
+  grid-template-columns: 32px 1fr 100px 38px;
+}
+
+.step-row label {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.step-row label span { display: block; margin: 0 0 4px 3px; }
+.step-row textarea { resize: vertical; }
+
+.pickle-summary-strip {
+  border-bottom: 1px solid rgba(166, 184, 107, 0.22);
+  border-top: 1px solid rgba(166, 184, 107, 0.22);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 54px 0 30px;
+}
+
+.pickle-summary-strip > div {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 24px;
+}
+
+.pickle-summary-strip strong {
+  color: #b8c87b;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+
+.pickle-summary-strip span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.pickle-batch-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pickle-batch-card {
+  background:
+    linear-gradient(145deg, rgba(78, 91, 43, 0.1), transparent 48%),
+    rgba(25, 20, 23, 0.88);
+  border: 1px solid rgba(166, 184, 107, 0.22);
+  border-radius: 18px;
+  min-height: 300px;
+  padding: 24px;
+}
+
+.batch-card-topline,
+.batch-card-footer {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.68rem;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.batch-status {
+  border: 1px solid rgba(166, 184, 107, 0.34);
+  border-radius: 999px;
+  color: #b8c87b;
+  padding: 5px 8px;
+}
+
+.pickle-batch-card h2 {
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 12px 0;
+}
+
+.pickle-batch-card > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.batch-ingredient-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 24px 0;
+}
+
+.batch-ingredient-cloud span {
+  background: rgba(166, 184, 107, 0.08);
+  border-color: rgba(166, 184, 107, 0.2);
+  color: #c1ce91;
+}
+
+.batch-card-footer {
+  border-top: 1px solid rgba(166, 184, 107, 0.14);
+  margin-top: 26px;
+  padding-top: 16px;
+}
+
+.pickle-notes-grid { margin-top: 24px; }
+
+.no-results {
+  color: var(--muted);
+  padding: 64px 0;
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  .section-mark { display: none; }
+  .topbar { grid-template-columns: auto 1fr auto; }
+  .topbar nav button { min-width: 92px; }
+  .lab-module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .recipe-grid,
+  .pickle-batch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ingredient-row,
+  .pickle-ingredient-list .ingredient-row {
+    grid-template-columns: 32px 72px 82px minmax(150px, 1fr) minmax(120px, 0.8fr) 38px;
+  }
+  .optional-check { grid-column: 4 / 6; }
+}
+
 @media (max-width: 1050px) {
   .wordmark {
     padding: 0 26px;
@@ -1739,6 +2570,216 @@ select:focus-visible {
     margin-top: -25px;
     padding: 9px;
     width: 40px;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobile-nav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .lab-home-page {
+    padding-top: 38px;
+  }
+
+  .lab-home-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    min-height: 0;
+  }
+
+  .lab-home-hero h1 {
+    font-size: clamp(3.3rem, 15vw, 5rem);
+  }
+
+  .lab-home-intro {
+    font-size: 1.08rem;
+  }
+
+  .home-orbit {
+    max-width: 250px;
+  }
+
+  .orbit-core {
+    height: 76px;
+    width: 76px;
+  }
+
+  .orbit-dot {
+    height: 46px;
+    width: 46px;
+  }
+
+  .dot-wine { transform: translate(55px, -104px); }
+  .dot-pickle { transform: translate(-124px, 22px); }
+  .dot-kitchen { transform: translate(62px, 64px); }
+
+  .lab-module-grid,
+  .recipe-grid,
+  .pickle-batch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-module-grid {
+    margin-top: 34px;
+  }
+
+  .lab-module-card {
+    min-height: 210px;
+  }
+
+  .module-icon {
+    margin: 25px 0 20px;
+  }
+
+  .area-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .area-heading h1 {
+    font-size: clamp(3.2rem, 15vw, 4.8rem);
+  }
+
+  .area-heading > .primary-button {
+    width: 100%;
+  }
+
+  .library-controls {
+    align-items: stretch;
+    flex-direction: column;
+    margin-top: 38px;
+  }
+
+  .compact-select {
+    width: 100%;
+  }
+
+  .recipe-grid {
+    gap: 30px;
+  }
+
+  .recipe-photo-frame {
+    aspect-ratio: 1.3;
+  }
+
+  .area-empty-state {
+    margin-top: 38px;
+    min-height: 0;
+    padding: 44px 20px;
+  }
+
+  .recipe-detail-hero,
+  .recipe-detail-grid,
+  .recipe-basics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-detail-hero {
+    gap: 34px;
+  }
+
+  .recipe-detail-image {
+    max-width: 460px;
+    width: 100%;
+  }
+
+  .recipe-detail-copy h1 {
+    font-size: clamp(3.2rem, 15vw, 5rem);
+  }
+
+  .recipe-detail-grid {
+    margin-top: 48px;
+  }
+
+  .recipe-ingredients-panel,
+  .recipe-steps-panel {
+    padding: 26px 20px;
+  }
+
+  .recipe-ingredients-panel li {
+    grid-template-columns: 72px 1fr;
+  }
+
+  .recipe-steps-panel li {
+    grid-template-columns: 28px 1fr;
+  }
+
+  .recipe-steps-panel li small {
+    grid-column: 2;
+  }
+
+  .photo-upload-field {
+    max-width: 270px;
+  }
+
+  .section-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .ingredient-row,
+  .pickle-ingredient-list .ingredient-row {
+    grid-template-columns: 30px 1fr 1fr 38px;
+    padding: 12px;
+  }
+
+  .ingredient-row .ingredient-name-input {
+    grid-column: 2 / 5;
+    grid-row: 1;
+  }
+
+  .ingredient-row > input:nth-of-type(1) {
+    grid-column: 2;
+  }
+
+  .ingredient-row > input:nth-of-type(2) {
+    grid-column: 3;
+  }
+
+  .ingredient-row > input:nth-of-type(4),
+  .pickle-ingredient-list .ingredient-row select {
+    grid-column: 2 / 4;
+  }
+
+  .ingredient-row .optional-check {
+    grid-column: 2 / 4;
+  }
+
+  .ingredient-row .icon-delete {
+    grid-column: 4;
+    grid-row: 2;
+  }
+
+  .step-row {
+    grid-template-columns: 30px 1fr 38px;
+  }
+
+  .step-row textarea {
+    grid-column: 2 / 4;
+  }
+
+  .step-row label {
+    grid-column: 2;
+  }
+
+  .step-row .icon-delete {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .pickle-summary-strip > div {
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+    padding: 18px 8px;
+  }
+
+  .pickle-summary-strip strong {
+    font-size: 2rem;
   }
 }
 
