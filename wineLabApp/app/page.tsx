@@ -367,7 +367,6 @@ export default function Home() {
 
     const wine = supabase.schema("wine");
     const lab = supabase.schema("lab");
-    const pickle = supabase.schema("pickle");
     const [
       tastingSessionsResult,
       bottlesResult,
@@ -413,7 +412,7 @@ export default function Home() {
         .limit(1)
         .maybeSingle(),
       lab.rpc("get_recipe_library"),
-      pickle.rpc("get_pickle_lab"),
+      lab.rpc("get_pickle_lab"),
     ]);
 
     const results = [
