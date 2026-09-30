@@ -6,6 +6,7 @@ import {
   Check,
   ChefHat,
   Clock3,
+  Copy,
   FlaskConical,
   ImagePlus,
   LoaderCircle,
@@ -14,6 +15,7 @@ import {
   Search,
   Sprout,
   Trash2,
+  Upload,
   Users,
   Wine,
   X,
@@ -125,6 +127,40 @@ type StepDraft = {
   timerMinutes: string;
 };
 
+type RecipeJsonImport = {
+  fields: Record<string, string>;
+  ingredients: IngredientDraft[];
+  steps: StepDraft[];
+};
+
+const recipeJsonPrompt = `Reformat this recipe as one JSON object. Return JSON only, with no markdown fences or commentary.
+{
+  "title": "Required recipe name",
+  "subtitle": "Short menu description",
+  "description": "Useful context or why we keep it",
+  "sourceUrl": "https://original-source.example/recipe",
+  "servings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "category": "Dinner",
+  "tags": ["weeknight", "chicken"],
+  "ingredients": [
+    {
+      "quantity": "2",
+      "unit": "tbsp",
+      "name": "Greek yogurt",
+      "preparation": "room temperature",
+      "optional": false
+    }
+  ],
+  "steps": [
+    {
+      "instruction": "Describe one complete step.",
+      "timerMinutes": 10
+    }
+  ]
+}`;
+
 function draftKey(): string {
   return typeof crypto !== "undefined" && "randomUUID" in crypto
     ? crypto.randomUUID()
@@ -145,6 +181,105 @@ function blankIngredient(role = "other"): IngredientDraft {
 
 function blankStep(): StepDraft {
   return { key: draftKey(), instruction: "", timerMinutes: "" };
+}
+
+function jsonRecord(value: unknown): Record<string, unknown> | null {
+  return value !== null && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : null;
+}
+
+function firstJsonValue(record: Record<string, unknown>, keys: string[]): unknown {
+  for (const key of keys) {
+    if (record[key] !== undefined && record[key] !== null) return record[key];
+  }
+  return undefined;
+}
+
+function jsonText(value: unknown): string {
+  if (typeof value === "string") return value.trim();
+  if (typeof value === "number" && Number.isFinite(value)) return String(value);
+  return "";
+}
+
+function jsonNumberText(value: unknown): string {
+  if (typeof value === "number" && Number.isFinite(value)) return String(value);
+  if (typeof value !== "string") return "";
+  const trimmed = value.trim();
+  const isoDuration = trimmed.match(/^PT(?:(\d+(?:\.\d+)?)H)?(?:(\d+(?:\.\d+)?)M)?$/i);
+  if (isoDuration) {
+    return String((Number(isoDuration[1] || 0) * 60) + Number(isoDuration[2] || 0));
+  }
+  const numeric = trimmed.match(/-?\d+(?:\.\d+)?/);
+  return numeric?.[0] ?? "";
+}
+
+function jsonBoolean(value: unknown): boolean {
+  return value === true || (typeof value === "string" && value.toLowerCase() === "true");
+}
+
+function normalizeRecipeJson(value: unknown): RecipeJsonImport {
+  const arrayValue = Array.isArray(value) ? value : null;
+  if (arrayValue && arrayValue.length !== 1) {
+    throw new Error("Upload one recipe at a time. This file contains more than one recipe.");
+  }
+  const outer = jsonRecord(arrayValue ? arrayValue[0] : value);
+  if (!outer) throw new Error("The JSON must contain one recipe object.");
+  const nested = jsonRecord(firstJsonValue(outer, ["recipe", "data"]));
+  const recipe = nested ?? outer;
+  const title = jsonText(firstJsonValue(recipe, ["title", "name", "recipeName"]));
+  if (!title) throw new Error("The recipe JSON needs a title.");
+
+  const ingredientSource = firstJsonValue(recipe, ["ingredients", "recipeIngredients", "recipeIngredient"]);
+  const ingredients = (Array.isArray(ingredientSource) ? ingredientSource : []).map((value) => {
+    if (typeof value === "string") return { ...blankIngredient(), name: value.trim() };
+    const item = jsonRecord(value);
+    if (!item) return null;
+    const amount = jsonRecord(firstJsonValue(item, ["amount", "quantity"]));
+    return {
+      ...blankIngredient(),
+      name: jsonText(firstJsonValue(item, ["name", "ingredient", "item", "rawText", "raw_text"])),
+      quantity: jsonText(firstJsonValue(item, ["quantity", "quantityText", "quantity_text", "quantityValue", "quantity_value"])) ||
+        jsonText(firstJsonValue(amount ?? {}, ["value", "quantity"])),
+      unit: jsonText(firstJsonValue(item, ["unit", "quantityUnit", "quantity_unit"])) ||
+        jsonText(firstJsonValue(amount ?? {}, ["unit"])),
+      preparation: jsonText(firstJsonValue(item, ["preparation", "prep", "preparationNotes", "notes"])),
+      optional: jsonBoolean(firstJsonValue(item, ["optional", "isOptional", "is_optional"])),
+    };
+  }).filter((item): item is IngredientDraft => Boolean(item?.name));
+
+  const stepSource = firstJsonValue(recipe, ["steps", "instructions", "directions", "recipeInstructions"]);
+  const steps = (Array.isArray(stepSource) ? stepSource : []).map((value) => {
+    if (typeof value === "string") return { ...blankStep(), instruction: value.trim() };
+    const item = jsonRecord(value);
+    if (!item) return null;
+    return {
+      ...blankStep(),
+      instruction: jsonText(firstJsonValue(item, ["instruction", "text", "direction", "description", "name"])),
+      timerMinutes: jsonNumberText(firstJsonValue(item, ["timerMinutes", "timer_minutes", "minutes", "durationMinutes", "duration"])),
+    };
+  }).filter((item): item is StepDraft => Boolean(item?.instruction));
+
+  const rawTags = firstJsonValue(recipe, ["tags", "keywords"]);
+  const tags = Array.isArray(rawTags)
+    ? rawTags.map(jsonText).filter(Boolean).join(", ")
+    : jsonText(rawTags);
+
+  return {
+    fields: {
+      title,
+      subtitle: jsonText(firstJsonValue(recipe, ["subtitle", "headline", "shortDescription", "short_description"])),
+      description: jsonText(firstJsonValue(recipe, ["description", "notes", "context"])),
+      sourceUrl: jsonText(firstJsonValue(recipe, ["sourceUrl", "source_url", "url", "source"])),
+      servings: jsonNumberText(firstJsonValue(recipe, ["servings", "yield", "recipeYield"])),
+      prepMinutes: jsonNumberText(firstJsonValue(recipe, ["prepMinutes", "prep_minutes", "prepTimeMinutes", "prepTime"])),
+      cookMinutes: jsonNumberText(firstJsonValue(recipe, ["cookMinutes", "cook_minutes", "cookTimeMinutes", "cookTime"])),
+      category: jsonText(firstJsonValue(recipe, ["category", "recipeCategory", "mealType"])),
+      tags,
+    },
+    ingredients: ingredients.length ? ingredients : [blankIngredient()],
+    steps: steps.length ? steps : [blankStep()],
+  };
 }
 
 function numberOrNull(value: string): number | null {
@@ -442,12 +577,14 @@ export function NewRecipe({
   onSaved: (id: string) => Promise<void>;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
+  const jsonFileRef = useRef<HTMLInputElement>(null);
   const [ingredients, setIngredients] = useState<IngredientDraft[]>([blankIngredient()]);
   const [steps, setSteps] = useState<StepDraft[]>([blankStep()]);
   const [photo, setPhoto] = useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [importMessage, setImportMessage] = useState<{ kind: "success" | "error"; text: string } | null>(null);
   const [draftStatus, setDraftStatus] = useState<"idle" | "saved" | "restored" | "unavailable">("idle");
   const storageKey = `apartmentLab:recipeDraft:v1:${draftOwnerId}`;
 
@@ -521,6 +658,72 @@ export function NewRecipe({
 
   function updateStep(key: string, patch: Partial<StepDraft>) {
     setSteps((current) => current.map((item) => item.key === key ? { ...item, ...patch } : item));
+  }
+
+  function currentRecipeHasContent(): boolean {
+    const hasField = Array.from(formRef.current?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+      "input[name]:not([type=file]), textarea[name], select[name]",
+    ) ?? []).some((field) => field.value.trim());
+    return hasField || ingredients.some((item) => item.name.trim()) || steps.some((item) => item.instruction.trim());
+  }
+
+  function applyRecipeImport(imported: RecipeJsonImport) {
+    setIngredients(imported.ingredients);
+    setSteps(imported.steps);
+    requestAnimationFrame(() => {
+      formRef.current?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+        "input[name]:not([type=file]), textarea[name], select[name]",
+      ).forEach((field) => {
+        field.value = imported.fields[field.name] ?? "";
+      });
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({
+          version: 1,
+          fields: imported.fields,
+          ingredients: imported.ingredients,
+          steps: imported.steps,
+        }));
+        setDraftStatus("saved");
+      } catch {
+        setDraftStatus("unavailable");
+      }
+    });
+    const ingredientCount = imported.ingredients.filter((item) => item.name).length;
+    const stepCount = imported.steps.filter((item) => item.instruction).length;
+    setImportMessage({
+      kind: "success",
+      text: `Imported ${imported.fields.title} with ${ingredientCount} ingredient${ingredientCount === 1 ? "" : "s"} and ${stepCount} step${stepCount === 1 ? "" : "s"}. Review it below before saving.`,
+    });
+  }
+
+  async function importRecipeJson(file: File) {
+    setImportMessage(null);
+    if (file.size > 1024 * 1024) {
+      setImportMessage({ kind: "error", text: "That JSON file is larger than 1 MB." });
+      return;
+    }
+    try {
+      const text = (await file.text()).replace(/^\uFEFF/, "").trim()
+        .replace(/^```(?:json)?\s*/i, "")
+        .replace(/\s*```$/, "");
+      const imported = normalizeRecipeJson(JSON.parse(text));
+      if (currentRecipeHasContent() && !window.confirm("Replace the current recipe draft with this JSON file?")) return;
+      applyRecipeImport(imported);
+    } catch (error) {
+      setImportMessage({
+        kind: "error",
+        text: error instanceof Error ? error.message : "The recipe JSON could not be read.",
+      });
+    }
+  }
+
+  async function copyRecipeFormat() {
+    try {
+      await navigator.clipboard.writeText(recipeJsonPrompt);
+      setImportMessage({ kind: "success", text: "LLM formatting instructions copied." });
+    } catch {
+      setImportMessage({ kind: "error", text: "Clipboard access was blocked by this browser." });
+    }
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -622,6 +825,31 @@ export function NewRecipe({
             <button type="button" onClick={discardDraft}><Trash2 /> Discard draft</button>
           ) : null}
         </div>
+
+        <section className="recipe-json-import" aria-labelledby="recipe-json-import-title">
+          <div>
+            <p className="eyebrow kitchen-eyebrow">Fast intake</p>
+            <h2 id="recipe-json-import-title">Import recipe JSON</h2>
+            <p>Use the format prompt with an LLM, then upload its JSON here. The importer fills this draft for review; it does not publish the recipe by itself.</p>
+          </div>
+          <div className="recipe-import-actions">
+            <input
+              ref={jsonFileRef}
+              className="sr-only"
+              type="file"
+              accept="application/json,.json"
+              aria-label="Choose recipe JSON file"
+              onChange={(event) => {
+                const file = event.currentTarget.files?.[0];
+                if (file) void importRecipeJson(file);
+                event.currentTarget.value = "";
+              }}
+            />
+            <button className="primary-button kitchen-button" type="button" onClick={() => jsonFileRef.current?.click()}><Upload /> Upload JSON</button>
+            <button className="ghost-button" type="button" onClick={copyRecipeFormat}><Copy /> Copy format for an LLM</button>
+          </div>
+          {importMessage ? <p className={`recipe-import-message ${importMessage.kind}`} role={importMessage.kind === "error" ? "alert" : "status"}>{importMessage.text}</p> : null}
+        </section>
 
         <section className="form-section kitchen-section">
           <div className="section-number">01</div>
