@@ -848,7 +848,7 @@ export function NewPickleBatch({
       })),
     };
 
-    const { data, error } = await supabase.schema("pickle").rpc("create_batch", { p_batch: payload });
+    const { data, error } = await supabase.schema("lab").rpc("create_pickle_batch", { p_batch: payload });
     if (error) {
       setMessage(error.message);
       setSaving(false);
