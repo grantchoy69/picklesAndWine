@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "./supabase";
+import { PickleBatchDetail } from "./pickleTastings";
 
 export type RecipeIngredient = {
   id: string;
@@ -702,7 +703,14 @@ export function NewRecipe({
   );
 }
 
-export function PickleLab({ batches, onNew }: { batches: PickleBatchRecord[]; onNew: () => void }) {
+export function PickleLab({ batches, onNew, people, draftOwnerId, currentPersonId, onSaved }: {
+  batches: PickleBatchRecord[]; onNew: () => void;
+  people: { id: number; display_name: string }[]; draftOwnerId: string;
+  currentPersonId: number | null; onSaved: () => Promise<void>;
+}) {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const batch = batches.find(b => b.id === selectedId);
+  if (batch) return <PickleBatchDetail key={batch.id} batch={batch} people={people} draftOwnerId={draftOwnerId} currentPersonId={currentPersonId} onBack={() => setSelectedId(null)} onSaved={onSaved} />;
   return (
     <div className="page inner-page pickle-lab-page">
       <div className="page-heading area-heading">
@@ -748,6 +756,7 @@ export function PickleLab({ batches, onNew }: { batches: PickleBatchRecord[]; on
               <div className="batch-card-footer">
                 <span>{dateLabel(batch.preparedAt)}</span>
                 <span>{batch.tastingCount} tastings</span>
+                <button className="small-add-button" type="button" onClick={() => setSelectedId(batch.id)}>Open batch / Add tasting</button>
               </div>
             </article>
           ))}

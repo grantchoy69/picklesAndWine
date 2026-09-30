@@ -608,7 +608,13 @@ export default function Home() {
       ) : null}
 
       {!loading && view === "pickles" ? (
-        <PickleLab batches={pickleBatches} onNew={() => setView("newPickle")} />
+        <PickleLab batches={pickleBatches} onNew={() => setView("newPickle")}
+          people={people} draftOwnerId={authSession.user.id} currentPersonId={currentPersonId}
+          onSaved={async () => {
+            const result = await supabase.schema("lab").rpc("get_pickle_lab");
+            if (result.error) throw result.error;
+            setPickleBatches((result.data ?? []) as PickleBatchRecord[]);
+          }} />
       ) : null}
 
       {!loading && view === "newPickle" ? (

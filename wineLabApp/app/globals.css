@@ -2791,3 +2791,19 @@ button.lab-module-card:hover {
     transition: none !important;
   }
 }
+
+/* Pickle tasting entry and chronological observations. */
+.pickle-form-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+.pickle-form-fields:disabled { opacity: .7; }
+.pickle-tasting-history { display: grid; gap: 20px; }
+.pickle-history-heading { margin: 32px 0 18px; }
+.pickle-scores { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 12px; margin: 18px 0; }
+.pickle-scores dt { font-size: .8rem; opacity: .7; }
+.pickle-scores dd { margin: 4px 0 0; }
+.pickle-verbatim { white-space: pre-wrap; overflow-wrap: anywhere; }
+.pickle-pairing-result { border-top: 1px solid #ffffff20; padding-top: 14px; margin-top: 16px; }
+.pickle-pair-editor { display: grid; gap: 12px; padding: 18px 0; border-bottom: 1px solid #ffffff20; }
+.pickle-observations { padding: 24px; border: 1px solid #ffffff20; border-radius: 12px; }
+.pickle-observations summary { cursor: pointer; margin-bottom: 16px; }
+.pickle-lab-page .batch-card-footer { flex-wrap: wrap; gap: 12px; }
+.pickle-lab-page .batch-card-footer button { min-height: 44px; }
