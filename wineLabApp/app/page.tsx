@@ -31,8 +31,28 @@ import {
   useState,
 } from "react";
 import { supabase } from "./supabase";
+import {
+  LabHome,
+  NewPickleBatch,
+  NewRecipe,
+  PickleBatchRecord,
+  PickleLab,
+  RecipeDetail,
+  RecipeLibrary,
+  RecipeRecord,
+} from "./labAreas";
 
-type View = "overview" | "history" | "tasting" | "detail";
+type View =
+  | "home"
+  | "wine"
+  | "history"
+  | "tasting"
+  | "detail"
+  | "pickles"
+  | "newPickle"
+  | "recipes"
+  | "newRecipe"
+  | "recipeDetail";
 
 type DraftStatus = "idle" | "restored" | "saved" | "unavailable";
 
@@ -331,10 +351,13 @@ function averageRating(reviews: Review[]): string {
 export default function Home() {
   const [authSession, setAuthSession] = useState<Session | null>(null);
   const [records, setRecords] = useState<TastingRecord[]>([]);
+  const [recipes, setRecipes] = useState<RecipeRecord[]>([]);
+  const [pickleBatches, setPickleBatches] = useState<PickleBatchRecord[]>([]);
   const [people, setPeople] = useState<Person[]>([]);
   const [currentPersonId, setCurrentPersonId] = useState<number | null>(null);
-  const [view, setView] = useState<View>("overview");
+  const [view, setView] = useState<View>("home");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedRecipeId, setSelectedRecipeId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -344,6 +367,7 @@ export default function Home() {
 
     const wine = supabase.schema("wine");
     const lab = supabase.schema("lab");
+    const pickle = supabase.schema("pickle");
     const [
       tastingSessionsResult,
       bottlesResult,
@@ -361,6 +385,8 @@ export default function Home() {
       promptResponsesResult,
       peopleResult,
       membershipResult,
+      recipesResult,
+      pickleBatchesResult,
     ] = await Promise.all([
       wine.from("tasting_sessions").select("*").eq("household_id", 1),
       wine.from("bottles").select("*").eq("household_id", 1),
@@ -386,6 +412,8 @@ export default function Home() {
         .select("person_id")
         .limit(1)
         .maybeSingle(),
+      lab.rpc("get_recipe_library"),
+      pickle.rpc("get_pickle_lab"),
     ]);
 
     const results = [
@@ -405,6 +433,8 @@ export default function Home() {
       promptResponsesResult,
       peopleResult,
       membershipResult,
+      recipesResult,
+      pickleBatchesResult,
     ];
     const failed = results.find((result) => result.error);
 
@@ -436,6 +466,18 @@ export default function Home() {
     setPeople(rows.people);
     setCurrentPersonId(rows.membership?.person_id ?? null);
     setRecords(buildRecords(rows));
+    const rawRecipes = (recipesResult.data ?? []) as RecipeRecord[];
+    const hydratedRecipes = await Promise.all(
+      rawRecipes.map(async (recipe) => {
+        if (!recipe.photoPath) return { ...recipe, photoUrl: null };
+        const { data } = await supabase.storage
+          .from("recipe-images")
+          .createSignedUrl(recipe.photoPath, 60 * 60);
+        return { ...recipe, photoUrl: data?.signedUrl ?? null };
+      }),
+    );
+    setRecipes(hydratedRecipes);
+    setPickleBatches((pickleBatchesResult.data ?? []) as PickleBatchRecord[]);
     setLoading(false);
   }, []);
 
@@ -457,9 +499,11 @@ export default function Home() {
         void loadLab();
       } else {
         setRecords([]);
+        setRecipes([]);
+        setPickleBatches([]);
         setPeople([]);
         setCurrentPersonId(null);
-        setView("overview");
+        setView("home");
         setLoading(false);
       }
     });
@@ -478,10 +522,18 @@ export default function Home() {
     initial: signedInPerson?.display_name.slice(0, 1) ?? "S",
   };
   const selectedRecord = records.find((record) => record.id === selectedId) ?? null;
+  const selectedRecipe = recipes.find((recipe) => recipe.id === selectedRecipeId) ?? null;
+  const reviewCount = records.reduce((total, record) => total + record.reviews.length, 0);
 
   function openRecord(id: string) {
     setSelectedId(id);
     setView("detail");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function openRecipe(id: string) {
+    setSelectedRecipeId(id);
+    setView("recipeDetail");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -510,7 +562,20 @@ export default function Home() {
         </div>
       ) : null}
 
-      {!loading && view === "overview" ? (
+      {!loading && view === "home" ? (
+        <LabHome
+          name={profile.name}
+          wineCount={records.length}
+          reviewCount={reviewCount}
+          pickleBatches={pickleBatches.length}
+          recipes={recipes.length}
+          onWine={() => setView("wine")}
+          onPickles={() => setView("pickles")}
+          onRecipes={() => setView("recipes")}
+        />
+      ) : null}
+
+      {!loading && view === "wine" ? (
         <Overview
           name={profile.name}
           records={records}
@@ -534,13 +599,48 @@ export default function Home() {
       {!loading && view === "tasting" ? (
         <NewTasting
           draftOwnerId={authSession.user.id}
-          onCancel={() => setView("overview")}
+          onCancel={() => setView("wine")}
           onSaved={async (sessionId) => {
             await loadLab();
             setSelectedId(sessionId);
             setView("detail");
           }}
         />
+      ) : null}
+
+      {!loading && view === "pickles" ? (
+        <PickleLab batches={pickleBatches} onNew={() => setView("newPickle")} />
+      ) : null}
+
+      {!loading && view === "newPickle" ? (
+        <NewPickleBatch
+          draftOwnerId={authSession.user.id}
+          onCancel={() => setView("pickles")}
+          onSaved={async () => {
+            await loadLab();
+            setView("pickles");
+          }}
+        />
+      ) : null}
+
+      {!loading && view === "recipes" ? (
+        <RecipeLibrary recipes={recipes} onNew={() => setView("newRecipe")} onOpen={openRecipe} />
+      ) : null}
+
+      {!loading && view === "newRecipe" ? (
+        <NewRecipe
+          draftOwnerId={authSession.user.id}
+          onCancel={() => setView("recipes")}
+          onSaved={async (recipeId) => {
+            await loadLab();
+            setSelectedRecipeId(recipeId);
+            setView("recipeDetail");
+          }}
+        />
+      ) : null}
+
+      {!loading && view === "recipeDetail" && selectedRecipe ? (
+        <RecipeDetail recipe={selectedRecipe} onBack={() => setView("recipes")} />
       ) : null}
 
       <MobileNav view={view} onNavigate={setView} />
@@ -577,9 +677,9 @@ function LoginScreen({ loading }: { loading: boolean }) {
           <FlaskConical aria-hidden="true" />
         </div>
         <p className="eyebrow">The Apartment Lab</p>
-        <h1>Wine Lab</h1>
+        <h1>Apartment Lab</h1>
         <p className="login-intro">
-          A private instrument for mapping the mysterious underlying Kyle.
+          A private instrument for bottles, batches, meals, and the mysterious underlying Kyle.
         </p>
 
         <form onSubmit={handleLogin}>
@@ -629,36 +729,53 @@ function Header({
   onSignOut: () => void;
 }) {
   const [accountOpen, setAccountOpen] = useState(false);
+  const areaLabel =
+    view === "home"
+      ? "Apartment Lab"
+      : ["pickles", "newPickle"].includes(view)
+        ? "Pickle Lab"
+        : ["recipes", "newRecipe", "recipeDetail"].includes(view)
+          ? "Recipe Book"
+          : "Wine Lab";
+  const wineActive = ["wine", "history", "detail", "tasting"].includes(view);
+  const pickleActive = ["pickles", "newPickle"].includes(view);
+  const recipeActive = ["recipes", "newRecipe", "recipeDetail"].includes(view);
 
   return (
     <header className="topbar">
-      <button className="wordmark" type="button" onClick={() => onNavigate("overview")}>
+      <button className="wordmark" type="button" onClick={() => onNavigate("home")}>
         The Apartment Lab
       </button>
       <div className="section-mark">
         <span className="mini-flask">
           <FlaskConical aria-hidden="true" />
         </span>
-        <span>Wine Lab</span>
+        <span>{areaLabel}</span>
       </div>
       <nav aria-label="Primary navigation">
         <button
-          className={view === "overview" ? "active" : ""}
-          onClick={() => onNavigate("overview")}
+          className={view === "home" ? "active" : ""}
+          onClick={() => onNavigate("home")}
         >
-          Overview
+          Lab
         </button>
         <button
-          className={view === "tasting" ? "active" : ""}
-          onClick={() => onNavigate("tasting")}
+          className={wineActive ? "active" : ""}
+          onClick={() => onNavigate("wine")}
         >
-          Tastings
+          Wine
         </button>
         <button
-          className={view === "history" || view === "detail" ? "active" : ""}
-          onClick={() => onNavigate("history")}
+          className={pickleActive ? "active" : ""}
+          onClick={() => onNavigate("pickles")}
         >
-          History
+          Pickles
+        </button>
+        <button
+          className={recipeActive ? "active" : ""}
+          onClick={() => onNavigate("recipes")}
+        >
+          Recipes
         </button>
       </nav>
       <div className="account-wrap">
@@ -1923,28 +2040,38 @@ function MobileNav({
   view: View;
   onNavigate: (view: View) => void;
 }) {
+  const wineActive = ["wine", "history", "detail", "tasting"].includes(view);
+  const pickleActive = ["pickles", "newPickle"].includes(view);
+  const recipeActive = ["recipes", "newRecipe", "recipeDetail"].includes(view);
   return (
     <nav className="mobile-nav" aria-label="Mobile navigation">
       <button
-        className={view === "overview" ? "active" : ""}
-        onClick={() => onNavigate("overview")}
+        className={view === "home" ? "active" : ""}
+        onClick={() => onNavigate("home")}
       >
         <FlaskConical />
         Lab
       </button>
       <button
-        className={view === "tasting" ? "active create" : "create"}
-        onClick={() => onNavigate("tasting")}
+        className={wineActive ? "active" : ""}
+        onClick={() => onNavigate("wine")}
       >
-        <Plus />
-        Taste
+        <Wine />
+        Wine
       </button>
       <button
-        className={view === "history" || view === "detail" ? "active" : ""}
-        onClick={() => onNavigate("history")}
+        className={pickleActive ? "active" : ""}
+        onClick={() => onNavigate("pickles")}
       >
-        <History />
-        History
+        <Compass />
+        Pickles
+      </button>
+      <button
+        className={recipeActive ? "active" : ""}
+        onClick={() => onNavigate("recipes")}
+      >
+        <BookOpen />
+        Recipes
       </button>
     </nav>
   );
