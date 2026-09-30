@@ -4,9 +4,9 @@ import "./globals.css";
 const isGitHubPagesBuild = process.env.GITHUB_PAGES === "true";
 
 export const metadata: Metadata = {
-  title: "Wine Lab · The Apartment Lab",
+  title: "The Apartment Lab",
   description:
-    "Gracie and Kyle’s private wine preference laboratory.",
+    "Gracie and Kyle’s private laboratory for wine, pickles, recipes, and the household systems still to come.",
   other: isGitHubPagesBuild
     ? undefined
     : {
