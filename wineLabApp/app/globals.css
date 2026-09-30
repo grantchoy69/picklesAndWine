@@ -2807,3 +2807,57 @@ button.lab-module-card:hover {
 .pickle-observations summary { cursor: pointer; margin-bottom: 16px; }
 .pickle-lab-page .batch-card-footer { flex-wrap: wrap; gap: 12px; }
 .pickle-lab-page .batch-card-footer button { min-height: 44px; }
+
+/* Reviewable JSON intake for LLM-formatted recipes. */
+.recipe-json-import {
+  align-items: center;
+  background: linear-gradient(135deg, rgba(227, 162, 107, 0.1), rgba(26, 20, 24, 0.84));
+  border: 1px solid rgba(227, 162, 107, 0.3);
+  border-radius: 18px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 26px 30px;
+}
+
+.recipe-json-import h2 {
+  font-size: 1.7rem;
+  margin: 5px 0 8px;
+}
+
+.recipe-json-import p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 650px;
+}
+
+.recipe-import-actions {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recipe-import-actions button {
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.recipe-import-message {
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
+.recipe-import-message.success { color: #cbd9a1 !important; }
+.recipe-import-message.error { color: #f4cbd1 !important; }
+
+@media (max-width: 720px) {
+  .recipe-json-import {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+    padding: 22px 20px;
+  }
+
+  .recipe-import-message { grid-column: auto; }
+}
